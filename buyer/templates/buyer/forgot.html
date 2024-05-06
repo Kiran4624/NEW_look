@@ -1,0 +1,67 @@
+{% extends 'buyer/base.html' %}
+{% load static %}
+{% block title %}
+forgot_password
+{% endblock%}
+{% block styles %}
+{% endblock %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+</head>
+<body>
+    <h2>Forgot Password</h2>
+    <form action="{% url 'reset_password' %}" method="post">
+        {% csrf_token %}
+        <label for="email">Enter your email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+<!-- <section class="vh-100">
+    <style>
+        .custom-heading {
+            font-size: 1.5rem; /* Adjust font size as needed */
+            font-weight: bold;
+            text-align: center;
+            color: #FF5733; /* Custom color */
+            font-family: 'UniqueFont',sans-serif;/* Use Roboto font */
+            /* Add any additional styles you want to customize the heading */
+        }
+    </style>
+    
+    <div class="container-fluid h-custom my-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <h1 class="custom-heading">Forgot Password</h1>
+            <div class="col-md-8 col-lg-6 col-xl-4 ">
+                <form>
+                
+              
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3">Email address</label>
+                        <input type="email" id="form3Example3" class="form-control form-control-lg">
+                           
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="button" class="btn btn-dark btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Submit</button>
+                        
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <a href="{% url 'login_view'%}">Already an account?</a>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+</section> -->
+{% endblock %}

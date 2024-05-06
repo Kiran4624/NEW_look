@@ -1,0 +1,68 @@
+{% extends 'buyer/base.html' %}
+{% load static %}
+{% block title %}
+register
+{% endblock%}
+{% block styles %}
+{% endblock %}
+{% block body %}
+<section class="vh-100">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        .custom-heading {
+            font-size: 1.5rem; /* Adjust font size as needed */
+            font-weight: bold;
+            text-align: center;
+            color: #FF5733; /* Custom color */
+            font-family: 'UniqueFont', sans-serif; /* Use Roboto font */
+            /* Add any additional styles you want to customize the heading */
+        }
+    </style>
+    <div class="container-fluid h-custom my-5">
+        <h1 class="custom-heading">Create An Account</h1>
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                   
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="email">Email address</label>
+                        <input type="email" id="email" name="email" class="form-control form-control-lg">
+                          
+
+                    </div>
+
+              
+                    <div class="form-outline mb-3">
+                        <label class="form-label" for="pwd">Password</label>
+                        <input type="password" id="pwd" name="password" class="form-control form-control-lg">
+                           
+
+                    </div>
+
+                
+                    <div class="form-outline mb-3">
+                        <label class="form-label" for="cpwd">Confirm password</label>
+                        <input type="password" id="cpwd" name="c_password" class="form-control form-control-lg">
+                           
+
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <input type="submit" class="btn btn-dark btn-lg"
+                               style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Register">
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 10px;">
+                        <a href="{% url 'login_view' %}">Already an account?</a>
+                    </div>
+
+                </form>
+            </div>
+           
+        </div>
+    </div>
+
+</section>
+{% endblock %}

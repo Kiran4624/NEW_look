@@ -1,0 +1,95 @@
+{% extends 'buyer/base.html' %}
+{% load static %}
+{% block title %}
+Contact
+{% endblock%}
+{% block styles %}
+<style>
+    /* Custom styles for the contact form */
+    #contact_form_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    #contact_form {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%; /* Adjust width as needed */
+        max-width: 600px; /* Adjust max-width as needed */
+    }
+
+    #contact_form label {
+        font-weight: bold;
+    }
+
+    #contact_form input[type="text"],
+    #contact_form input[type="email"],
+    #contact_form input[type="tel"],
+    #contact_form textarea {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    #contact_form textarea {
+        resize: none;
+    }
+
+    #contact_form button {
+        background-color: #343a40;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    #contact_form button:hover {
+        background-color: #212529;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div id="contact_form_container">
+    <div id="contact_form" class="container">
+        <h1 class="display-6 text-center">Contact Form</h1>
+        <form action="" method="post" id="contact_form" name="contact_form" >
+            {% csrf_token %}
+            <div class="mb-5 row">
+                <div class="col">
+                    <label>First Name</label>
+                    <input type="text" required maxlength="50" class="form-control" id="first_name"
+                        name="first_name" placeholder="Kiran">
+                </div>
+                <div class="col">
+                    <label>Last Name</label>
+                    <input type="text" required maxlength="50" class="form-control" id="last_name" name="last_name" placeholder="Tandel">
+                </div>
+            </div>
+            <div class="mb-5 row">
+                <div class="col">
+                    <label for="email_addr">Email address</label>
+                    <input type="email" required maxlength="50" class="form-control" id="email_addr" name="email"
+                        placeholder="name@example.com">
+                </div>
+                <div class="col">
+                    <label for="phone_input">Phone</label>
+                    <input type="tel" required maxlength="50" class="form-control" id="phone_input" name="phone"
+                        placeholder="(+xx) xxx xxxx xxx ">
+                </div>
+            </div>
+            <div class="mb-5">
+                <label for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="5">Write a message...</textarea>
+            </div>
+            <button type="submit" class="btn btn-dark px-4 btn-lg">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

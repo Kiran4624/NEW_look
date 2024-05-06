@@ -1,0 +1,133 @@
+{% extends 'buyer/base.html' %}
+{% load static %}
+{% block title %}
+Profile
+{% endblock%}
+{% block styles %}
+<style>
+    /* Custom styles for the profile page */
+.card-style2 {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 12px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border-radius: 10px;
+    padding: 12px 30px;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 10px;
+    padding: 12px 30px;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+</style>
+{% endblock %}
+{% block body %}
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+           
+            <div class="col-lg-12 mb-4 mb-sm-5 d-flex justify-content-center">
+                <h5 class="mb-0">Customer ID: {{request.session.c_id}}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mb-4 mb-sm-5">
+                <div class="card card-style1 border-0">
+                    <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+
+                        <div class="row align-items-center">
+                            <div class="col-lg-12 px-xl-10 d-flex justify-content-center">
+                                <form action="{% url 'update_info' %}" class="w-50" method="post">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        <label for="firstname" class="form-label">Firstname </label>
+                                        <input type="text" class="form-control" id="firstname"
+                                            value="{{get_customer.first_name}}" name="firstname">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lastname" class="form-label">Lastname </label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname"
+                                            value="{{get_customer.last_name}}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            value="{{get_customer.email}}" disabled>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="mobile" class="form-label">Mobile </label>
+                                        <input type="text" class="form-control" name="mobile" id="mobile"
+                                            value="{{get_customer.mobile}}">
+                                    </div>
+                                    <div class="mb-3">
+
+                                        {% if get_customer.is_added_address != False %}
+                                        <label for="exampleFormControlTextarea1" class="form-label">Address
+                                            details</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            rows="3">{{get_address.address}}, {{get_address.city}}, {{get_address.state}} ({{get_address.pincode}})</textarea>
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="d-flex justify-content-center my-5">
+                                        <a class="btn btn-danger mx-1" href="{% url 'logout' %}">Logout</a>
+                                        <input type="submit" class="btn btn-success mx-1" value="Save Changes"></input>
+
+                                        
+
+                                    </div>
+                                </form>
+                               
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
